@@ -1,0 +1,16 @@
+[submodule "remindme-backend"]
+	path = remindme-backend
+	url = https://github.com/andryfailli/remindme-backend
+	branch = develop
+[submodule "remindme-cron"]
+	path = remindme-cron
+	url = https://github.com/andryfailli/remindme-cron
+	branch = develop
+[submodule "remindme-db"]
+	path = remindme-db
+	url = https://github.com/andryfailli/remindme-db
+	branch = develop
+[submodule "remindme-frontend"]
+	path = remindme-frontend
+	url = https://github.com/andryfailli/remindme-frontend
+	branch = develop
