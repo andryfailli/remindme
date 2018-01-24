@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: remindme-cron
+  labels:
+    app: remindme-cron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remindme-cron
+  template:
+    metadata:
+      labels:
+        app: remindme-cron
+    spec:
+      containers:
+      - name: remindme-cron
+        image: remindme-cron:0.0.1-SNAPSHOT

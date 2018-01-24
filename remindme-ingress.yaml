@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: remindme
+spec:
+  tls:
+  - hosts:
+    - remindme.apps.andreafailli.it
+    secretName: remindme
+  rules:
+  - host: remindme.apps.andreafailli.it
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: remindme-frontend
+          servicePort: 80
+      - path: /api
+        backend:
+          serviceName: remindme-api
+          servicePort: 8080
