@@ -13,7 +13,6 @@
 
 	<modules>
 		<module>remindme-backend</module>
-		<module>remindme-cron</module>
 		<module>remindme-db</module>
 		<module>remindme-frontend</module>
 	</modules>
