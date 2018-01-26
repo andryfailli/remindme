@@ -26,12 +26,9 @@ script:
   - mvn -D"firebase.config.serverKey"="$REMINDME_FIREBASE_SERVER_KEY" clean package
   - sleep 60
   - kubectl get ingress
-  - sudo rm /etc/hosts
-  - sudo ls -la /etc/hosts
-  - echo "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" > tmp
-  - sudo mv tmp /etc/hosts
   - sudo echo "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" > /etc/hosts
   - sudo cat /etc/hosts
+  - npm install -g angular-cli
   - cd ./remindme-frontend && ng e2e --prod
 
   
