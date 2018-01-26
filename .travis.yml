@@ -8,6 +8,9 @@ services:
 jdk:
   - oraclejdk8
   
+env:
+- CHANGE_MINIKUBE_NONE_USER=true
+  
 before_script:
   - echo $REMINDME_FIREBASE_SERVER_KEY_JSON > ./remindme-backend/remindme-api/src/main/resources/firebase-server-key.json
   - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.7/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
