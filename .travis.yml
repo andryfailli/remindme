@@ -18,7 +18,7 @@ before_script:
   - sudo minikube start --vm-driver=none --kubernetes-version=v1.8.0
   - minikube update-context
   - sudo minikube addons enable ingress
-  - sudo eval $(minikube docker-env)
+  - sudo $(minikube docker-env)
   - chmod +x deploy.sh && deploy.sh
 
 script:
