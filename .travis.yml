@@ -18,6 +18,8 @@ before_script:
   - sudo minikube start --vm-driver=none --kubernetes-version=v1.8.0
   - minikube update-context
   - sudo minikube addons enable ingress
+  - sleep 60
+  - kubectl cluster-info 
   - chmod +x deploy.sh && ./deploy.sh
 
 script:
