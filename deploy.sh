@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 kubectl create -f ./remindme-db-deployment.yaml
 kubectl create -f ./remindme-db-service.yaml
 kubectl create -f ./remindme-api-deployment.yaml
