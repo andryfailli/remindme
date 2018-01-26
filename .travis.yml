@@ -27,7 +27,7 @@ script:
   - sleep 60
   - kubectl get ingress
   - sudo ls -la /etc/hosts
-  - sudo echo "remindme.apps.andreafailli.it    10.20.1.98" >> /etc/hosts
+  - sudo rm /etc/hosts
   - sudo echo "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" >> /etc/hosts
   - sudo cat /etc/hosts
   - cd ./remindme-frontend && ng e2e --prod
