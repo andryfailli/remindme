@@ -27,7 +27,7 @@ script:
   - sleep 60
   - kubectl get ingress
   - sudo echo "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" > tmp
-  - rm /etc/hosts
+  - sudo rm /etc/hosts
   - mv tmp /etc/hosts
   - sudo cat /etc/hosts
   - npm install -g angular-cli
