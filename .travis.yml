@@ -30,7 +30,7 @@ script:
   - sudo rm /etc/hosts
   - sudo mv tmp /etc/hosts
   - sudo cat /etc/hosts
-  - npm install -g angular-cli
+  - npm install -g @angular/cli
   - cd ./remindme-frontend
   - ls -la
   - ng e2e
