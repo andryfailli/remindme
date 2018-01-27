@@ -32,9 +32,8 @@ script:
   - sudo cat /etc/hosts
   - npm install -g @angular/cli
   - cd ./remindme-frontend
-  - ls -la
   - ng e2e
-  - rm /etc/hosts
+  - sudo rm /etc/hosts
   - sudo mv /etc/hosts.bkp /etc/hosts
 
   
