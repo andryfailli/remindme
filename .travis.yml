@@ -21,13 +21,15 @@ before_script:
   - sleep 60
   - kubectl cluster-info 
   - chmod +x deploy.sh && ./deploy.sh
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 script:
   - mvn -D"firebase.config.serverKey"="$REMINDME_FIREBASE_SERVER_KEY" clean package
   - sleep 60
   - kubectl get ingress
   - sudo cp /etc/hosts ./tmp
-  - sudo printf "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" >> ./tmp
+  - printf "remindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" >> ./tmp
   - sudo rm /etc/hosts
   - sudo mv ./tmp /etc/hosts
   - sudo cat /etc/hosts
