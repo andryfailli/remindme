@@ -29,7 +29,7 @@ script:
   - sleep 60
   - kubectl get ingress
   - sudo cp /etc/hosts ./tmp
-  - sed -i -e "\$aremindme.apps.andreafailli.it $(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip')" ./tmp
+  - sed -i -e "\$a$(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip') remindme.apps.andreafailli.it" ./tmp
   - sudo rm /etc/hosts
   - sudo mv ./tmp /etc/hosts
   - sudo cat /etc/hosts
