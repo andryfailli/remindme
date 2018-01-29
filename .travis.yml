@@ -1,0 +1,43 @@
+language: java
+
+sudo: required
+
+services:
+  - docker
+
+jdk:
+  - oraclejdk8
+  
+env:
+  - CHANGE_MINIKUBE_NONE_USER=true
+  
+before_script:
+  - echo $REMINDME_FIREBASE_SERVER_KEY_JSON > ./remindme-backend/remindme-api/src/main/resources/firebase-server-key.json
+  - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+  - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+  - sudo minikube start --vm-driver=none --kubernetes-version=v1.8.0
+  - minikube update-context
+  - sudo minikube addons enable ingress
+  - sleep 60
+  - kubectl cluster-info 
+  - chmod +x deploy.sh && ./deploy.sh
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
+script:
+  - mvn -D"firebase.config.serverKey"="$REMINDME_FIREBASE_SERVER_KEY" clean package
+  - sleep 60
+  - kubectl get ingress
+  - sudo cp /etc/hosts ./tmp
+  - sed -i -e "\$a$(kubectl get ingress -o json | jq -r '.items[0].status.loadBalancer.ingress[0].ip') remindme.apps.andreafailli.it" ./tmp
+  - sudo rm /etc/hosts
+  - sudo mv ./tmp /etc/hosts
+  - sudo cat /etc/hosts
+  - npm install -g @angular/cli
+  - cd ./remindme-frontend
+  - ng e2e
+
+  
+cache:
+  directories:
+    - '$HOME/.m2/repository'
