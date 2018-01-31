@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: remindme-api
-        image: remindme-api:0.0.1-SNAPSHOT
+        image: remindme-api:0.0.1-RELEASE
         ports:
         - containerPort: 8080
