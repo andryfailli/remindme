@@ -35,7 +35,7 @@ script:
   - sudo cat /etc/hosts
   - npm install -g @angular/cli
   - cd ./remindme-frontend
-  - curl "https://remindme.apps.andreafailli.it/api/user/me"
+  - curl "https://remindme.apps.andreafailli.it/api/user/me" --insecure
   - ng e2e --environment test
 
   
