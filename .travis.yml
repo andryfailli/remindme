@@ -41,6 +41,7 @@ script:
   - sudo minikube service
   - kubectl get services
   - kubectl get pods 
+  - kubectl logs $(kubectl get pods -o json | jq -r '.items[0].metadata.name')
   - ng e2e --environment test
 
   
