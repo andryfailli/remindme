@@ -38,7 +38,9 @@ script:
   - sleep 60
   - curl "https://remindme.apps.andreafailli.it"
   - curl "https://remindme.apps.andreafailli.it/api/user/me" --insecure
-  - sudo minikube services
+  - sudo minikube service
+  - kubectl get services
+  - kubectl get pods 
   - ng e2e --environment test
 
   
