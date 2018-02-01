@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: remindme-api
+  labels:
+    app: remindme-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remindme-api
+  template:
+    metadata:
+      labels:
+        app: remindme-api
+    spec:
+      containers:
+      - name: remindme-api
+        image: remindme-api:0.0.1-RELEASE
+        ports:
+        - containerPort: 8080

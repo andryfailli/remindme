@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: remindme-notifier
+  labels:
+    app: remindme-notifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remindme-notifier
+  template:
+    metadata:
+      labels:
+        app: remindme-notifier
+    spec:
+      containers:
+      - name: remindme-notifier
+        image: remindme-notifier:0.0.1-RELEASE
+        ports:
+        - containerPort: 8090
