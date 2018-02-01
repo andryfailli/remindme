@@ -35,7 +35,10 @@ script:
   - sudo cat /etc/hosts
   - npm install -g @angular/cli
   - cd ./remindme-frontend
+  - sleep 60
+  - curl "https://remindme.apps.andreafailli.it" --insecure
   - curl "https://remindme.apps.andreafailli.it/api/user/me" --insecure
+  - sudo minikube services
   - ng e2e --environment test
 
   
