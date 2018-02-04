@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: remindme-frontend
-        image: remindme-frontend:0.0.1-SNAPSHOT
+        image: remindme-frontend:0.0.2-RELEASE
         ports:
         - containerPort: 80
