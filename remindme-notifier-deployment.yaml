@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: remindme-notifier
-        image: remindme-notifier:0.0.1-RELEASE
+        image: remindme-notifier:0.0.2-RELEASE
         ports:
         - containerPort: 8090
