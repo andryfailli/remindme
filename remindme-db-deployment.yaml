@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: remindme-db
-        image: remindme-db:0.0.1-SNAPSHOT
+        image: remindme-db:0.0.1-RELEASE
         ports:
         - containerPort: 27017
